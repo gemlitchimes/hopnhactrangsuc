@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Poesía of the Gemlit Chimes — AI Studio",
+  "short_name": "Gemlit Chimes",
+  "version": "1.0.2",
+  "description": "Khoác áo hộp nhạc pha lê cho Google AI Studio: nền pastel chuyển động, sao bay, kính mờ và tiếng chuông gió.",
+  "permissions": ["storage"],
+  "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Gemlit Chimes",
+    "default_icon": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png" }
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://aistudio.google.com/*"],
+      "css": ["fonts.css", "theme.css"],
+      "js": ["chime.js", "content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    { "resources": ["fonts/*"], "matches": ["https://aistudio.google.com/*"] }
+  ]
+}

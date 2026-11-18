@@ -1,0 +1,556 @@
+/* ==========================================================================
+   Poesía of the Gemlit Chimes — theme for Google AI Studio
+   Everything is scoped under html.gemlit-on so the popup switch turns it off.
+   AI Studio is an Angular Material app (ms-* components, --mat-sys-* tokens).
+   ========================================================================== */
+
+/* 1. KHỞI TẠO BIẾN MÀU THƯƠNG HIỆU GỐC */
+html.gemlit-on {
+  --g-bg: oklch(0.97 0.02 330);
+  --g-fg: oklch(0.3 0.05 300);
+  --g-muted: oklch(0.5 0.05 300);
+  --g-primary: oklch(0.6 0.15 350);
+  --g-rose: oklch(0.84 0.12 355);
+  --g-gold: oklch(0.9 0.12 92);
+  --g-sky: oklch(0.84 0.11 235);
+  --g-silver: oklch(0.82 0.01 260);
+  --g-glass: 0.55; /* set from the popup */
+  --g-glass-bg: oklch(1 0 0 / var(--g-glass));
+  --g-glass-strong: oklch(1 0 0 / calc(var(--g-glass) + 0.2));
+  --g-glass-border: oklch(1 0 0 / 0.75);
+  --g-shadow: 0 10px 40px -15px oklch(0.6 0.15 350 / 0.35), inset 0 1px 0 oklch(1 0 0 / 0.85);
+  --g-glow: 0 0 24px oklch(1 0 0 / 0.8), 0 0 8px oklch(0.84 0.12 355 / 0.6);
+  --g-serif: "Gemlit Cormorant Garamond", "Cormorant Garamond", Georgia, serif;
+  --g-script: "Gemlit Great Vibes", "Great Vibes", cursive;
+
+  /* Gán màu nền gốc vào thẻ html để làm móng dưới cùng */
+  background: var(--g-bg) !important;
+  color-scheme: light;
+}
+
+/* ==========================================================================
+   BƯỚC SỐNG CÒN: ĐÁNH SẬP BIẾN MÀU CỦA AI STUDIO
+   ========================================================================== */
+html.gemlit-on, 
+html.gemlit-on body {
+  --mat-sys-primary: var(--g-primary) !important;
+  --mat-sys-on-primary: #fff !important;
+  --mat-sys-primary-container: oklch(0.93 0.06 355) !important;
+  --mat-sys-on-primary-container: var(--g-fg) !important;
+  --mat-sys-secondary-container: oklch(0.93 0.05 235) !important;
+  --mat-sys-on-secondary-container: var(--g-fg) !important;
+  
+  --mat-sys-background: transparent !important;
+  --mat-sys-surface: transparent !important;
+  --mat-sys-surface-container-lowest: transparent !important;
+  --mat-sys-surface-container-low: transparent !important;
+  --mat-sys-surface-container: transparent !important;
+  --mat-sys-surface-container-high: transparent !important;
+  --mat-sys-surface-container-highest: transparent !important;
+  
+  --mat-sys-on-surface: var(--g-fg) !important;
+  --mat-sys-on-surface-variant: var(--g-muted) !important;
+  --mat-sys-outline: var(--g-silver) !important;
+  --mat-sys-outline-variant: oklch(0.82 0.01 260 / 0.6) !important;
+}
+
+/* ---------- 2. DỌN SẠCH MỌI LỚP VỎ BỌC ĐƯỢC ANGULAR TIÊM VÀO SAU KHI LOAD ---------- */
+html.gemlit-on body,
+html.gemlit-on .theme-light,
+html.gemlit-on .theme-dark,
+html.gemlit-on .mat-app-background,
+html.gemlit-on .mat-typography,
+html.gemlit-on ms-app,
+html.gemlit-on .app-container,
+html.gemlit-on .layout-wrapper,
+html.gemlit-on .layout-main,
+html.gemlit-on .main-content,
+html.gemlit-on main,
+html.gemlit-on mat-sidenav-container,
+html.gemlit-on .mat-sidenav-container,
+html.gemlit-on mat-sidenav-content,
+html.gemlit-on .mat-sidenav-content,
+html.gemlit-on mat-drawer-container,
+html.gemlit-on .mat-drawer-container,
+html.gemlit-on mat-drawer-content,
+html.gemlit-on .mat-drawer-content,
+html.gemlit-on ms-chat-session,
+html.gemlit-on .chat-container,
+html.gemlit-on .chat-view-container,
+html.gemlit-on .chat-session-content,
+html.gemlit-on ms-autoscroll-container,
+html.gemlit-on .page-container,
+html.gemlit-on .content-container,
+html.gemlit-on .mdc-drawer,
+html.gemlit-on .mdc-drawer__content,
+html.gemlit-on .gemlit-clear,
+html.gemlit-on ms-chat-bottom-bar,
+html.gemlit-on .bottom-container {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Kéo toàn bộ giao diện app lên trên lớp nền ambient */
+html.gemlit-on ms-app,
+html.gemlit-on .app-container {
+  position: relative !important;
+  z-index: 1 !important; 
+}
+
+html.gemlit-on body {
+  color: var(--g-fg) !important;
+  font-family: var(--g-serif);
+}
+
+/* ---------- 3. PHÁ VỠ MẶT NẠ VÀ "MÁY CHÉM" CỦA AI STUDIO ---------- */
+html.gemlit-on * {
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+}
+html.gemlit-on .chat-view-container::before,
+html.gemlit-on .chat-view-container::after,
+html.gemlit-on ms-autoscroll-container::before,
+html.gemlit-on ms-autoscroll-container::after {
+  display: none !important;
+}
+
+html.gemlit-on ms-prompt-switcher,
+html.gemlit-on .prompt-switcher-container,
+html.gemlit-on ms-prompt-input-wrapper,
+html.gemlit-on .prompt-input-wrapper,
+html.gemlit-on ms-prompt-box,
+html.gemlit-on .prompt-box-container {
+  overflow: visible !important;
+  contain: none !important; 
+  clip-path: none !important;
+  z-index: 99999 !important;
+  position: relative !important;
+}
+
+/* ---------- 4. Liquid-glass surfaces ---------- */
+html.gemlit-on :is(
+  ms-navbar, .nav-container, mat-sidenav, mat-drawer, .mat-drawer, .mat-sidenav,
+  ms-run-settings, ms-right-side-panel, .run-settings, .settings-panel,
+  ms-toolbar, mat-toolbar, .page-header, .toolbar-container
+) {
+  background: var(--g-glass-bg) !important;
+  backdrop-filter: blur(24px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+  border-color: var(--g-glass-border) !important;
+  color: var(--g-fg) !important;
+}
+
+/* Chat turns */
+html.gemlit-on :is(ms-chat-turn .chat-turn-container, [class*="chat-turn-container"]) {
+  background: var(--g-glass-bg) !important;
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid var(--g-glass-border) !important;
+  border-radius: 22px !important;
+  box-shadow: var(--g-shadow) !important;
+  color: var(--g-fg) !important;
+  transition: box-shadow .4s;
+}
+html.gemlit-on, html.gemlit-on :is(ms-autoscroll-container, .chat-view-container, .chat-session-content) {
+  scroll-padding-top: 80px;
+}
+html.gemlit-on ms-chat-turn:first-of-type { scroll-margin-top: 80px; }
+html.gemlit-on :is(ms-chat-turn .chat-turn-container, [class*="chat-turn-container"]) > :last-child { margin-bottom: 0 !important; }
+html.gemlit-on ms-chat-turn :is(.turn-footer, .turn-actions, .actions-container, .actions, ms-chat-turn-options, [class*="footer"]) {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+html.gemlit-on :is(ms-chat-turn .chat-turn-container.user, [class*="chat-turn-container"].user) {
+  background: linear-gradient(135deg, oklch(0.94 0.06 355 / var(--g-glass)), oklch(0.95 0.05 235 / var(--g-glass))) !important;
+}
+html.gemlit-on :is(ms-chat-turn .chat-turn-container.model, [class*="chat-turn-container"].model) {
+  background: linear-gradient(135deg, oklch(1 0 0 / var(--g-glass)), oklch(0.97 0.05 92 / var(--g-glass))) !important;
+}
+html.gemlit-on :is(ms-chat-turn .chat-turn-container, [class*="chat-turn-container"]):not(:has(:is(.chat-turn-container, [class*="chat-turn-container"]))):hover {
+  box-shadow: var(--g-glow), var(--g-shadow) !important;
+}
+html.gemlit-on :is(ms-chat-turn .chat-turn-container, [class*="chat-turn-container"]):has(:is(.chat-turn-container, [class*="chat-turn-container"])) {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Chat text */
+html.gemlit-on :is(ms-chat-turn, ms-cmark-node, ms-text-chunk, .turn-content, .model-prompt-container) {
+  font-family: var(--g-serif) !important;
+  color: var(--g-fg) !important;
+}
+html.gemlit-on :is(ms-cmark-node, ms-text-chunk, .turn-content) :is(p, li, blockquote, td, th) {
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+html.gemlit-on :is(ms-cmark-node, .turn-content) :is(h1, h2, h3) {
+  font-family: var(--g-serif) !important;
+  font-weight: 600;
+  color: var(--g-primary) !important;
+}
+html.gemlit-on :is(ms-cmark-node, .turn-content) a { color: var(--g-primary) !important; }
+html.gemlit-on :is(ms-cmark-node, .turn-content) blockquote {
+  border-left: 3px solid var(--g-rose) !important;
+  font-style: italic;
+  color: var(--g-muted) !important;
+}
+
+/* Author labels */
+html.gemlit-on :is(.author-label, .turn-header, .chat-turn-header) {
+  font-family: var(--g-serif) !important;
+  font-style: italic;
+  letter-spacing: .08em;
+  color: var(--g-primary) !important;
+}
+
+/* Thinking / thoughts panel */
+html.gemlit-on :is(ms-thought-chunk, .thought-panel) {
+  background: oklch(1 0 0 / 0.35) !important;
+  border: 1px dashed var(--g-silver) !important;
+  border-radius: 16px !important;
+  color: var(--g-muted) !important;
+}
+
+/* ==========================================================================
+   KHỐI CODE: NÚT COPY THẲNG HÀNG VỚI CHỮ & XÓA VIỀN HỒNG
+   ========================================================================== */
+html.gemlit-on ms-chat-turn mat-expansion-panel,
+html.gemlit-on .turn-content mat-expansion-panel {
+    --mat-expansion-container-background-color: transparent !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    margin: 16px 0 !important;
+}
+
+html.gemlit-on ms-chat-turn .mat-expansion-panel-content *,
+html.gemlit-on ms-chat-turn pre *,
+html.gemlit-on ms-chat-turn code * {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+html.gemlit-on ms-chat-turn .mat-expansion-panel-header {
+    display: flex !important;
+    justify-content: flex-start !important; 
+    width: 100% !important;
+    background: transparent !important;
+    border-bottom: 1px dashed var(--g-silver) !important; 
+    padding: 8px 0 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin-bottom: 12px !important;
+    pointer-events: none; 
+}
+
+html.gemlit-on ms-chat-turn .mat-expansion-panel-header-title,
+html.gemlit-on ms-chat-turn .mat-expansion-indicator,
+html.gemlit-on ms-chat-turn .mat-expansion-panel-header button:first-of-type {
+    display: none !important;
+}
+
+html.gemlit-on ms-chat-turn .mat-expansion-panel-header button {
+    pointer-events: auto;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: auto !important;
+    height: 28px !important;
+    padding: 0 16px !important;
+    border-radius: 14px !important;
+    background: oklch(1 0 0 / 0.5) !important;
+    border: 1px solid var(--g-silver) !important;
+    margin: 0 0 0 19px !important; 
+    transition: all 0.3s ease;
+}
+
+html.gemlit-on ms-chat-turn .mat-expansion-panel-header button:hover {
+    background: var(--g-glass-strong) !important;
+    box-shadow: var(--g-glow);
+    border-color: var(--g-rose) !important;
+}
+
+html.gemlit-on ms-chat-turn .mat-expansion-panel-header button * {
+    display: none !important;
+}
+
+html.gemlit-on ms-chat-turn .mat-expansion-panel-header button::after {
+    content: "Copy";
+    font-family: var(--g-serif) !important;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-style: italic;
+    color: var(--g-primary);
+    letter-spacing: 0.05em;
+    display: block !important;
+}
+
+html.gemlit-on ms-chat-turn .mat-expansion-panel-body,
+html.gemlit-on ms-chat-turn .mat-expansion-panel-content {
+    display: block !important;
+    padding: 0 !important; 
+    border-left: none !important; 
+}
+
+html.gemlit-on ms-chat-turn .mat-expansion-panel-content *,
+html.gemlit-on ms-chat-turn pre,
+html.gemlit-on ms-chat-turn code {
+    font-family: var(--g-serif) !important;
+    font-size: 1.08rem !important;
+    font-style: italic !important;
+    color: var(--g-muted) !important;
+    white-space: pre-wrap !important;
+    word-break: break-word !important;
+    line-height: 1.65 !important;
+    padding-left: 19px !important; 
+}
+
+html.gemlit-on :not(pre) > code {
+    background: transparent !important;
+    color: var(--g-muted) !important;
+    font-family: var(--g-serif) !important;
+    font-style: italic !important;
+    border: none !important;
+    padding: 0 !important;
+}
+
+/* ---------- 5. Prompt box ---------- */
+html.gemlit-on :is(ms-prompt-input-wrapper .prompt-input-wrapper, ms-prompt-box, .prompt-input-wrapper, .prompt-box-container) {
+  background: var(--g-glass-strong) !important;
+  backdrop-filter: blur(24px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+  border: 1px solid var(--g-silver) !important;
+  border-radius: 28px !important;
+  box-shadow: var(--g-shadow) !important;
+  transition: box-shadow .4s;
+}
+html.gemlit-on :is(ms-prompt-input-wrapper .prompt-input-wrapper, ms-prompt-box, .prompt-input-wrapper, .prompt-box-container):has(:is(.prompt-input-wrapper, ms-prompt-box, .prompt-box-container)) {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+html.gemlit-on :is(ms-prompt-input-wrapper .prompt-input-wrapper, ms-prompt-box, .prompt-input-wrapper):not(:has(:is(.prompt-input-wrapper, ms-prompt-box, .prompt-box-container))):focus-within {
+  box-shadow: var(--g-glow), var(--g-shadow) !important;
+  border-color: var(--g-rose) !important;
+}
+html.gemlit-on :is(ms-prompt-input-wrapper, ms-prompt-box, ms-autosize-textarea, .prompt-input-wrapper) textarea {
+  background: transparent !important;
+  color: var(--g-fg) !important;
+  font-family: var(--g-serif) !important;
+  font-size: 1.15rem !important;
+  caret-color: var(--g-primary);
+}
+html.gemlit-on textarea::placeholder {
+  color: var(--g-muted) !important;
+  font-style: italic;
+  opacity: 1;
+}
+
+/* ---------- 6. Silver buttons ---------- */
+html.gemlit-on :is(ms-run-button button, button.run-button) {
+  border: 1px solid var(--g-silver) !important;
+  border-radius: 9999px !important;
+  color: var(--g-fg) !important;
+  background-color: oklch(1 0 0 / 0.45) !important;
+  background-image: linear-gradient(115deg, transparent 30%, oklch(1 0 0 / 0.95) 48%, oklch(0.9 0.12 92 / 0.8) 52%, transparent 70%) !important;
+  background-size: 260% 100% !important;
+  background-position: 130% 0 !important;
+  background-repeat: no-repeat !important;
+  font-family: var(--g-serif) !important;
+  font-weight: 600 !important;
+  letter-spacing: .06em;
+  transition: background-position .8s ease, box-shadow .4s, transform .3s !important;
+}
+html.gemlit-on :is(ms-run-button button, button.run-button):hover:not([disabled]) {
+  background-position: -30% 0 !important;
+  box-shadow: var(--g-glow) !important;
+  transform: translateY(-1px);
+}
+html.gemlit-on :is(ms-run-button button, button.run-button)[disabled] { opacity: .55; }
+
+html.gemlit-on :is(.mdc-button, .mat-mdc-button-base, .mat-mdc-icon-button) {
+  transition: box-shadow .4s, transform .3s;
+}
+html.gemlit-on :is(.mdc-button, .mat-mdc-icon-button):hover:not([disabled]) {
+  box-shadow: var(--g-glow);
+}
+html.gemlit-on :is(.mdc-button__label, .mat-mdc-button .mdc-button__label) {
+  font-family: var(--g-serif);
+  letter-spacing: .03em;
+}
+html.gemlit-on .mat-mdc-unelevated-button:not([disabled]) {
+  --mdc-filled-button-container-color: var(--g-primary);
+  --mat-button-filled-container-color: var(--g-primary);
+}
+
+/* Chips, toggles, sliders */
+html.gemlit-on .mat-mdc-chip {
+  border: 1px solid var(--g-silver) !important;
+  background: oklch(1 0 0 / 0.4) !important;
+}
+html.gemlit-on .mat-mdc-slider {
+  --mdc-slider-handle-color: var(--g-primary);
+  --mdc-slider-active-track-color: var(--g-rose);
+  --mdc-slider-inactive-track-color: var(--g-silver);
+  --mat-slider-handle-color: var(--g-primary);
+  --mat-slider-active-track-color: var(--g-rose);
+  --mat-slider-inactive-track-color: var(--g-silver);
+}
+html.gemlit-on .mat-mdc-slide-toggle {
+  --mdc-switch-selected-track-color: var(--g-rose);
+  --mdc-switch-selected-handle-color: var(--g-primary);
+  --mat-slide-toggle-selected-track-color: var(--g-rose);
+  --mat-slide-toggle-selected-handle-color: var(--g-primary);
+}
+
+/* ---------- 7. Menus, dialogs, tooltips ---------- */
+html.gemlit-on :is(.mat-mdc-menu-panel, .mat-mdc-select-panel, .mat-mdc-autocomplete-panel, .mat-mdc-dialog-surface, .mdc-dialog__surface) {
+  background: var(--g-glass-strong) !important;
+  backdrop-filter: blur(28px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(160%) !important;
+  border: 1px solid var(--g-glass-border) !important;
+  border-radius: 20px !important;
+  box-shadow: var(--g-shadow) !important;
+  color: var(--g-fg) !important;
+}
+html.gemlit-on .cdk-overlay-backdrop.cdk-overlay-dark-backdrop {
+  background: oklch(0.97 0.02 330 / 0.6) !important;
+  backdrop-filter: blur(4px);
+}
+html.gemlit-on .mdc-tooltip__surface {
+  background: oklch(0.3 0.05 300 / 0.9) !important;
+  font-family: var(--g-serif) !important;
+  border-radius: 10px !important;
+}
+
+/* ---------- 8. Details ---------- */
+html.gemlit-on ::selection { background: oklch(0.84 0.12 355 / 0.55); color: var(--g-fg); }
+html.gemlit-on * { scrollbar-width: thin; scrollbar-color: oklch(0.84 0.12 355 / 0.7) transparent; }
+html.gemlit-on hr, html.gemlit-on mat-divider { border-color: oklch(0.82 0.01 260 / 0.6) !important; }
+
+/* ---------- 9. LỚP NỀN AMBIENT & SAO BAY ---------- */
+#gemlit-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0; 
+  overflow: hidden;
+  pointer-events: none;
+  background: transparent !important; 
+}
+html:not(.gemlit-on) #gemlit-ambient,
+html:not(.gemlit-on) #gemlit-toast,
+html:not(.gemlit-on) #gemlit-welcome { display: none !important; }
+
+#gemlit-ambient .gemlit-blob {
+  position: absolute;
+  width: 60vmax; height: 60vmax;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.7;
+  will-change: transform;
+  animation: gemlit-drift 20s infinite alternate ease-in-out;
+}
+#gemlit-ambient .gemlit-blob.rose { 
+  background: var(--g-rose); 
+  left: -10%; top: -10%;
+  animation-duration: 25s;
+}
+#gemlit-ambient .gemlit-blob.gold { 
+  background: var(--g-gold); 
+  right: -10%; top: 30%;
+  animation-duration: 22s;
+  animation-direction: alternate-reverse;
+}
+#gemlit-ambient .gemlit-blob.sky { 
+  background: var(--g-sky); 
+  left: 20%; bottom: -20%;
+  animation-duration: 28s;
+}
+
+@keyframes gemlit-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(4vw, 4vh) scale(1.05); }
+  100% { transform: translate(-4vw, 8vh) scale(0.95); }
+}
+
+#gemlit-ambient canvas { 
+  display: block !important;
+  position: absolute !important; 
+  inset: 0 !important; 
+  width: 100% !important; 
+  height: 100% !important; 
+  z-index: 10 !important; 
+  pointer-events: none !important;
+  opacity: 1 !important;
+  /* Phục hồi quầng sáng mờ màu trắng tinh khôi thay vì đỏ/hồng để sao lấp lánh như sương */
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.8)) !important;
+}
+html.gemlit-still #gemlit-ambient canvas { display: none !important; }
+html.gemlit-still #gemlit-ambient .gemlit-blob { animation: none !important; }
+
+/* ---------- 10. Toast & Welcome Screen ---------- */
+#gemlit-toast {
+  position: fixed;
+  left: 50%; bottom: 28px;
+  z-index: 2147483000;
+  transform: translate(-50%, 20px);
+  opacity: 0;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  background: oklch(1 0 0 / 0.7);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid var(--g-silver);
+  box-shadow: var(--g-shadow);
+  color: var(--g-fg);
+  font: italic 1.1rem var(--g-serif);
+  pointer-events: none;
+  transition: opacity .5s, transform .5s;
+}
+#gemlit-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+#gemlit-welcome {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  background: oklch(0.97 0.02 330 / 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: opacity .9s;
+}
+#gemlit-welcome.out { opacity: 0; }
+#gemlit-welcome svg { width: min(90vw, 900px); }
+#gemlit-welcome text {
+  font-family: var(--g-script);
+  font-size: 92px;
+  fill: var(--g-primary);
+  fill-opacity: 0;
+  stroke: var(--g-primary);
+  stroke-width: 1.2;
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+  animation: gemlit-draw 2.6s ease forwards, gemlit-fill 1s 2s ease forwards;
+}
+@keyframes gemlit-draw { to { stroke-dashoffset: 0; } }
+@keyframes gemlit-fill { to { fill-opacity: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  #gemlit-welcome text { animation: none; stroke-dashoffset: 0; fill-opacity: 1; }
+  #gemlit-ambient .gemlit-blob { animation: none !important; }
+}

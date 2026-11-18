@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <title>Gemlit Chimes</title>
+  <link rel="stylesheet" href="popup-fonts.css" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true"><span class="b rose"></span><span class="b gold"></span><span class="b sky"></span></div>
+  <main class="panel">
+    <header>
+      <img src="icons/icon48.png" alt="" width="40" height="40" />
+      <div>
+        <h1>Gemlit Chimes</h1>
+        <p class="sub">Hộp nhạc pha lê cho AI Studio</p>
+      </div>
+    </header>
+
+    <label class="row big">
+      <span>Bật giao diện Hộp Nhạc</span>
+      <input type="checkbox" data-key="enabled" />
+      <i class="sw"></i>
+    </label>
+
+    <section class="group">
+      <label class="row">
+        <span>Nền chuyển động &amp; sao bay</span>
+        <input type="checkbox" data-key="motion" />
+        <i class="sw"></i>
+      </label>
+      <label class="row">
+        <span>Tiếng chuông gió khi bấm nút</span>
+        <input type="checkbox" data-key="sound" />
+        <i class="sw"></i>
+      </label>
+      <label class="row">
+        <span>Chuông báo khi AI trả lời xong</span>
+        <input type="checkbox" data-key="doneChime" />
+        <i class="sw"></i>
+      </label>
+    </section>
+
+    <section class="group">
+      <label class="slider">
+        <span>Âm lượng <b data-out="volume"></b></span>
+        <input type="range" min="0" max="100" step="5" data-key="volume" />
+      </label>
+      <label class="slider">
+        <span>Độ mờ của kính <b data-out="glass"></b></span>
+        <input type="range" min="25" max="85" step="5" data-key="glass" />
+        <small><em>Trong suốt</em><em>Đục, dễ đọc</em></small>
+      </label>
+    </section>
+
+    <div class="actions">
+      <button id="test" class="silver" data-chime="medium">♪ Nghe thử</button>
+      <button id="reset" class="silver" data-chime="short">Mặc định</button>
+    </div>
+
+    <p class="tip">Mẹo: đặt AI Studio ở giao diện <b>Sáng</b> (Settings → Theme → Light) để chữ rõ nhất.</p>
+  </main>
+  <script src="chime.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
