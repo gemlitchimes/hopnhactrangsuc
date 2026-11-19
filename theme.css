@@ -445,10 +445,10 @@ html.gemlit-on hr, html.gemlit-on mat-divider { border-color: oklch(0.82 0.01 26
 #gemlit-ambient {
   position: fixed;
   inset: 0;
-  z-index: 0; 
+  z-index: 0;
   overflow: hidden;
   pointer-events: none;
-  background: transparent !important; 
+  background: var(--g-bg, #f8fafc); /* Lớp nền dự phòng tránh lộ khoảng trắng */
 }
 html:not(.gemlit-on) #gemlit-ambient,
 html:not(.gemlit-on) #gemlit-toast,
@@ -456,43 +456,68 @@ html:not(.gemlit-on) #gemlit-welcome { display: none !important; }
 
 #gemlit-ambient .gemlit-blob {
   position: absolute;
-  width: 60vmax; height: 60vmax;
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.7;
+  filter: blur(85px);
+  opacity: 0.72;
+  mix-blend-mode: normal; /* Tránh pha màu cộng/trừ làm xỉn hoặc xám khi giao nhau */
   will-change: transform;
-  animation: gemlit-drift 20s infinite alternate ease-in-out;
-}
-#gemlit-ambient .gemlit-blob.rose { 
-  background: var(--g-rose); 
-  left: -10%; top: -10%;
-  animation-duration: 25s;
-}
-#gemlit-ambient .gemlit-blob.gold { 
-  background: var(--g-gold); 
-  right: -10%; top: 30%;
-  animation-duration: 22s;
-  animation-direction: alternate-reverse;
-}
-#gemlit-ambient .gemlit-blob.sky { 
-  background: var(--g-sky); 
-  left: 20%; bottom: -20%;
-  animation-duration: 28s;
 }
 
-@keyframes gemlit-drift {
-  0% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(4vw, 4vh) scale(1.05); }
-  100% { transform: translate(-4vw, 8vh) scale(0.95); }
+/* Khối Rose: vòng cung chéo ở góc trên trái */
+#gemlit-ambient .gemlit-blob.rose {
+  background: var(--g-rose);
+  width: 74vmax;
+  height: 74vmax;
+  left: -20%;
+  top: -24%;
+  animation: gemlit-orbit-rose 11.5s infinite alternate ease-in-out;
 }
 
-#gemlit-ambient canvas { 
+/* Khối Gold: vòng cung chéo ở vùng cao bên phải, cân đối với Rose */
+#gemlit-ambient .gemlit-blob.gold {
+  background: var(--g-gold);
+  width: 72vmax;
+  height: 72vmax;
+  right: -22%;
+  top: -4%;
+  animation: gemlit-orbit-gold 12.5s infinite alternate ease-in-out;
+}
+
+/* Khối Sky: thu gọn kích thước & hạ thấp để không lấn át diện tích */
+#gemlit-ambient .gemlit-blob.sky {
+  background: var(--g-sky);
+  width: 64vmax;
+  height: 64vmax;
+  left: 6%;
+  bottom: -36%;
+  animation: gemlit-orbit-sky 13.5s infinite alternate ease-in-out;
+}
+
+@keyframes gemlit-orbit-rose {
+  0%   { transform: translate(0vw, 0vh) rotate(0deg) scale(1.04); }
+  50%  { transform: translate(9vw, 11vh) rotate(22deg) scale(1.1); }
+  100% { transform: translate(15vw, 4vh) rotate(40deg) scale(1.0); }
+}
+
+@keyframes gemlit-orbit-gold {
+  0%   { transform: translate(0vw, 0vh) rotate(0deg) scale(1.05); }
+  50%  { transform: translate(-11vw, 9vh) rotate(-25deg) scale(0.98); }
+  100% { transform: translate(-4vw, 17vh) rotate(-45deg) scale(1.08); }
+}
+
+@keyframes gemlit-orbit-sky {
+  0%   { transform: translate(0vw, 0vh) rotate(0deg) scale(1.02); }
+  50%  { transform: translate(11vw, -7vh) rotate(18deg) scale(1.08); }
+  100% { transform: translate(20vw, 1vh) rotate(35deg) scale(0.98); }
+}
+
+#gemlit-ambient canvas {
   display: block !important;
-  position: absolute !important; 
-  inset: 0 !important; 
-  width: 100% !important; 
-  height: 100% !important; 
-  z-index: 10 !important; 
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 10 !important;
   pointer-events: none !important;
   opacity: 1 !important;
   /* Phục hồi quầng sáng mờ màu trắng tinh khôi thay vì đỏ/hồng để sao lấp lánh như sương */
