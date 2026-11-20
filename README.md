@@ -10,7 +10,7 @@ Khoác áo "hộp nhạc pha lê" cho trang chat của Google AI Studio (https:/
 
 ## Cài đặt (Chrome, Edge, Brave, Arc, Opera)
 
-1. Giải nén file `.zip` ra một thư mục.
+1. Bấm nút ` < > Code` màu xanh rồi chọn `Download ZIP` để tải file về. Giải nén file `.zip` ra một thư mục.
 2. Mở `chrome://extensions` (Edge: `edge://extensions`).
 3. Bật **Developer mode / Chế độ nhà phát triển** ở góc trên bên phải.
 4. Bấm **Load unpacked / Tải tiện ích đã giải nén** và chọn thư mục vừa giải nén.
